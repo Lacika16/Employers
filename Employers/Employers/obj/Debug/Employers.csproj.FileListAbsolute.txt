@@ -1,0 +1,7 @@
+C:\Users\Tanulo\Git\Employers\Employers\Employers\obj\Debug\Employers.csproj.AssemblyReference.cache
+C:\Users\Tanulo\Git\Employers\Employers\Employers\obj\Debug\Employers.csproj.CoreCompileInputs.cache
+C:\Users\Tanulo\Git\Employers\Employers\Employers\bin\Debug\Employers.exe.config
+C:\Users\Tanulo\Git\Employers\Employers\Employers\bin\Debug\Employers.exe
+C:\Users\Tanulo\Git\Employers\Employers\Employers\bin\Debug\Employers.pdb
+C:\Users\Tanulo\Git\Employers\Employers\Employers\obj\Debug\Employers.exe
+C:\Users\Tanulo\Git\Employers\Employers\Employers\obj\Debug\Employers.pdb
