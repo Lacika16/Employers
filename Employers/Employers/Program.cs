@@ -87,7 +87,7 @@ class Program
         DolgozoKezelo dolgozoKezelo = new DolgozoKezelo();
 
         // Fájl beolvasása
-        dolgozoKezelo.BeolvasFajlbol("adatok_100sor.txt");
+        dolgozoKezelo.BeolvasFajlbol("tulajdonsagok_100sor.txt");
 
         if (dolgozoKezelo.Dolgozok.Any())
         {
