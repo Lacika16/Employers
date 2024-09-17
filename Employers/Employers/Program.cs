@@ -5,6 +5,7 @@ using System.Linq;
 
 class Program
 {
+    // Osztály a dolgozók adatainak tárolására
     public class Dolgozo
     {
         public int ID { get; set; }
@@ -21,54 +22,83 @@ class Program
         }
     }
 
-    static void Main()
+    // Osztály a dolgozók kezeléséhez
+    public class DolgozoKezelo
     {
-        var dolgozok = File.ReadLines("tulajdonsagok_100sor.txt")
-            .Select(sor => sor.Split(';'))
-            .Where(reszek => reszek.Length == 4)
-            .Select(reszek => {
-                try
-                {
-                    return new Dolgozo(
-                        int.Parse(reszek[0]),
-                        reszek[1].Trim(),
-                        int.Parse(reszek[2]),
-                        decimal.Parse(reszek[3]));
-                }
-                catch
-                {
-                    Console.WriteLine($"Hibás sor: {string.Join(";", reszek)}");
-                    return null;
-                }
-            })
-            .Where(d => d != null)
-            .ToList();
+        public List<Dolgozo> Dolgozok { get; set; } = new List<Dolgozo>();
 
-        if (!dolgozok.Any())
+        public void BeolvasFajlbol(string fileNev)
         {
-            Console.WriteLine("Nincs adat.");
-            return;
+            foreach (var sor in File.ReadLines(fileNev))
+            {
+                var reszek = sor.Split(';');
+                if (reszek.Length == 4)
+                {
+                    try
+                    {
+                        Dolgozok.Add(new Dolgozo(
+                            int.Parse(reszek[0]),
+                            reszek[1].Trim(),
+                            int.Parse(reszek[2]),
+                            decimal.Parse(reszek[3])
+                        ));
+                    }
+                    catch
+                    {
+                        Console.WriteLine($"Hibás sor: {sor}");
+                    }
+                }
+            }
         }
 
-        // 3. Alkalmazottak neveinek listázása
-        Console.WriteLine("Dolgozók nevei:");
-        dolgozok.ForEach(d => Console.WriteLine(d.Nev));
+        public void ListazNevek()
+        {
+            Console.WriteLine("Dolgozók nevei:");
+            Dolgozok.ForEach(d => Console.WriteLine(d.Nev));
+        }
 
-        // 4. Legmagasabb bérű dolgozók
-        var maxBer = dolgozok.Max(d => d.Ber);
-        Console.WriteLine("\nLegnagyobb bérrel rendelkező dolgozók:");
-        dolgozok.Where(d => d.Ber == maxBer)
-                .ToList()
-                .ForEach(d => Console.WriteLine($"ID: {d.ID}, Név: {d.Nev}"));
+        public void LegnagyobbBeruDolgozok()
+        {
+            var maxBer = Dolgozok.Max(d => d.Ber);
+            Console.WriteLine("\nLegnagyobb bérrel rendelkező dolgozók:");
+            Dolgozok.Where(d => d.Ber == maxBer)
+                    .ToList()
+                    .ForEach(d => Console.WriteLine($"ID: {d.ID}, Név: {d.Nev}"));
+        }
 
-        // 5. Nyugdíj előtt állók (10 éven belül)
-        Console.WriteLine("\nNyugdíjhoz közel álló dolgozók:");
-        dolgozok.Where(d => 65 - d.Eletkor <= 10 && 65 - d.Eletkor > 0)
-                .ToList()
-                .ForEach(d => Console.WriteLine($"Név: {d.Nev}, Kor: {d.Eletkor}"));
+        public void NyugdijhozKozelAllok()
+        {
+            Console.WriteLine("\nNyugdíjhoz közel álló dolgozók:");
+            Dolgozok.Where(d => 65 - d.Eletkor <= 10 && 65 - d.Eletkor > 0)
+                    .ToList()
+                    .ForEach(d => Console.WriteLine($"Név: {d.Nev}, Kor: {d.Eletkor}"));
+        }
 
-        // 6. Magas bérű dolgozók száma (50000 Ft felett)
-        var magasBeruDolgozokSzama = dolgozok.Count(d => d.Ber > 50000);
-        Console.WriteLine($"\nDolgozók száma, akik 50,000 forint felett keresnek: {magasBeruDolgozokSzama}");
+        public void MagasBeruDolgozokSzama()
+        {
+            var magasBeruSzam = Dolgozok.Count(d => d.Ber > 50000);
+            Console.WriteLine($"\n50000 forint felett keresők száma: {magasBeruSzam}");
+        }
+    }
+
+    static void Main()
+    {
+        // Dolgozó kezelő példányosítása
+        DolgozoKezelo dolgozoKezelo = new DolgozoKezelo();
+
+        // Fájl beolvasása
+        dolgozoKezelo.BeolvasFajlbol("adatok_100sor.txt");
+
+        if (dolgozoKezelo.Dolgozok.Any())
+        {
+            dolgozoKezelo.ListazNevek();
+            dolgozoKezelo.LegnagyobbBeruDolgozok();
+            dolgozoKezelo.NyugdijhozKozelAllok();
+            dolgozoKezelo.MagasBeruDolgozokSzama();
+        }
+        else
+        {
+            Console.WriteLine("Nincs adat.");
+        }
     }
 }
