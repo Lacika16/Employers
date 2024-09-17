@@ -69,14 +69,14 @@ class Program
             return;
         }
 
-        // 3. Jelenítse meg az összes dolgozó nevét
+        // 3.
         Console.WriteLine("Alkalmazottak nevei:");
         foreach (var alkalmazott in alkalmazottak)
         {
             Console.WriteLine(alkalmazott.Nev);
         }
 
-        // 4. Írja ki azoknak az azonosítóját és nevét, akik a legjobban keresnek
+        // 4.
         try
         {
             var maxKereset = alkalmazottak.Max(a => a.Kereset);
@@ -93,7 +93,7 @@ class Program
             Console.WriteLine($"Hiba a legmagasabb kereset meghatározása közben: {e.Message}");
         }
 
-        // 5. Írja ki azoknak a nevét és korát, akiknek 10 évük van a nyugdíjig (65 év a nyugdíj korhatár)
+        // 5.
         const int nyugdijKor = 65;
         var nyugdijhozKozeliek = alkalmazottak.Where(a => (nyugdijKor - a.Kor) == 10);
 
@@ -103,7 +103,7 @@ class Program
             Console.WriteLine($"Név: {alkalmazott.Nev}, Kor: {alkalmazott.Kor}");
         }
 
-        // 6. Számolja meg hányan keresnek 50,000 forint felett
+        // 6.
         decimal keresetKuszob = 50000;
         var magasKeresetuAlkalmazottak = alkalmazottak.Count(a => a.Kereset > keresetKuszob);
 
