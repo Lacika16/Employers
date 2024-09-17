@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Tanulo\\Git\\Employers\\Employers\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9AF4E698-4B92-4960-92C8-D7040FB3ABD5}|Employers\\Employers.csproj|c:\\users\\tanulo\\git\\employers\\employers\\employers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AF4E698-4B92-4960-92C8-D7040FB3ABD5}|Employers\\Employers.csproj|solutionrelative:employers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Git\\Employers\\Employers\\Employers\\Program.cs",
+              "RelativeDocumentMoniker": "Employers\\Program.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Git\\Employers\\Employers\\Employers\\Program.cs",
+              "RelativeToolTip": "Employers\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T08:34:12.964Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
